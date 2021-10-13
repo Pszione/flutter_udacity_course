@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_udacity_course/category.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'categories_section.dart';
+
 void main() {
   runApp(const UnitConverterApp());
 }
@@ -15,16 +17,23 @@ class UnitConverterApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Unit Converter',
-      home: const Scaffold(
+      home: Scaffold(
         //backgroundColor: Colors.green[100],
-        body: Center(
+        appBar: AppBar(
+          title: const Text('Unit Converter'),
+          centerTitle: true,
+          elevation: 0,
+          automaticallyImplyLeading: true,
+        ),
+        body: const Center(
           child: Padding(
-            padding: EdgeInsets.all(kDefaultPadding),
-            child: Category(
-              label: 'Cake',
-              icon: Icons.cake,
-              color: Colors.green,
-            ),
+            padding: EdgeInsets.zero,
+            child: CategoriesRoute(),
+            // Category(
+            //   label: 'Cake',
+            //   icon: Icons.cake,
+            //   color: Colors.green,
+            // ),
           ),
         ),
       ),
