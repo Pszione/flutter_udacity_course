@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_udacity_course/category.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 void main() {
@@ -14,9 +15,18 @@ class UnitConverterApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Unit Converter',
-      home: Scaffold(
-        backgroundColor: Colors.green[100],
-        body: const Center(),
+      home: const Scaffold(
+        //backgroundColor: Colors.green[100],
+        body: Center(
+          child: Padding(
+            padding: EdgeInsets.all(kDefaultPadding),
+            child: Category(
+              label: 'Cake',
+              icon: Icons.cake,
+              color: Colors.green,
+            ),
+          ),
+        ),
       ),
       theme: ThemeData(
         brightness: Brightness.dark,
@@ -51,7 +61,14 @@ const kWhiteColor = Colors.white;
 const kDarkColor = Color(0xFF191923);
 const kGrayColor = Color(0xFFD8D8D8);
 
+const kHugePadding = 33.0;
+const kDefaultPadding = 20.0;
+const kDefaultRowSpacing = kDefaultPadding * 1.5;
+const kHalfPadding = kDefaultPadding / 2;
+const kMediumPadding = kDefaultPadding / 1.5;
+const kSmallPadding = kDefaultPadding / 3;
 var kHugeBorderRadius = BorderRadius.circular(28);
 var kDefaultBorderRadius = BorderRadius.circular(kDefaultBorderRadiusAsDouble);
 const kDefaultBorderRadiusAsDouble = 20.0;
 const kSmallBorderRadiusAsDouble = 16.0;
+const kSplashRadius = 85.0;
