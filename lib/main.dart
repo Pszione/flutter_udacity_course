@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_udacity_course/category.dart';
+import 'package:flutter_udacity_course/components/category.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'categories_section.dart';

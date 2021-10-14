@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'category.dart';
+import 'components/category.dart';
 import 'main.dart';
 import 'models/category_model.dart';
 
