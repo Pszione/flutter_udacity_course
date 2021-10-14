@@ -19,15 +19,14 @@ class UnitConverterApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: kAppName,
-      home: Scaffold(
+      home: const Scaffold(
         //backgroundColor: Colors.green[100],
-        appBar: const AppBarCustom(
+        appBar: AppBarCustom(
           title: kAppName,
         ),
-        body: const Center(
+        body: Center(
           child: Padding(
-            padding: EdgeInsets.zero,
-            child: CategoriesScreen(),
+            padding: EdgeInsets.zero, child: CategoriesScreen(),
             // Category(
             //   label: 'Cake',
             //   icon: Icons.cake,

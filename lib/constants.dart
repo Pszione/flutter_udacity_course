@@ -40,16 +40,21 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   final Color? color;
 
   @override
-  Size get preferredSize => AppBar().preferredSize;
+  Size get preferredSize => AppBar().preferredSize * 1.3;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title ?? kAppName),
+      titleTextStyle: Theme.of(context)
+          .textTheme
+          .headline5!
+          .copyWith(fontWeight: FontWeight.bold),
       centerTitle: true,
       elevation: 0,
       automaticallyImplyLeading: true,
-      backgroundColor: color,
+      backgroundColor: color?.withOpacity(0.75),
+      iconTheme: const IconThemeData(size: 60),
     );
   }
 }
