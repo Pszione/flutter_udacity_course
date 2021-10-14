@@ -4,6 +4,11 @@ import 'package:flutter_udacity_course/unit.dart';
 
 const _padding = EdgeInsets.all(kDefaultPadding);
 
+Unit? _fromUnit, _toUnit;
+List<DropdownMenuItem>? _unitMenuItems;
+double? _inputValue;
+String _convertedValue = '';
+
 class UnitConverterScreen extends StatefulWidget {
   const UnitConverterScreen(
       {Key? key, this.unitName, this.unitColor, required this.units})
@@ -18,11 +23,6 @@ class UnitConverterScreen extends StatefulWidget {
 }
 
 class _UnitConverterScreenState extends State<UnitConverterScreen> {
-  Unit? _fromUnit, _toUnit;
-  List<DropdownMenuItem>? _unitMenuItems;
-  double? _inputValue;
-  String _convertedValue = '';
-  //
   bool _showValidationErrorMessage = false;
 
   @override
@@ -56,21 +56,28 @@ class _UnitConverterScreenState extends State<UnitConverterScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(kDefaultPadding),
-        child: Column(
-          children: const [
-            // inputGroup,
-            InputFieldGroup(),
-            // arrows
-            RotatedBox(
-              quarterTurns: 1,
-              child: Icon(
-                Icons.compare_arrows,
-                size: 55.0,
+        // Un focus keyboard/textfield
+        child: GestureDetector(
+          onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+          behavior: HitTestBehavior.translucent,
+          excludeFromSemantics: true,
+          //
+          child: Column(
+            children: const [
+              // inputGroup,
+              InputFieldGroup(),
+              // arrows
+              RotatedBox(
+                quarterTurns: 1,
+                child: Icon(
+                  Icons.compare_arrows,
+                  size: 55.0,
+                ),
               ),
-            ),
-            // outputGroup,
-            InputFieldGroup(),
-          ],
+              // outputGroup,
+              OutputFieldGroup(),
+            ],
+          ),
         ),
       ),
     );
@@ -118,7 +125,45 @@ class InputFieldGroup extends StatelessWidget {
               //errorText: _showValidationError ? 'Invalid number entered' : null,
               border: OutlineInputBorder(borderRadius: kDefaultBorderRadius),
             ),
+            keyboardType: TextInputType.number,
+            // TODO
+            //onChanged: _updateInputValue,
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class OutputFieldGroup extends StatelessWidget {
+  const OutputFieldGroup({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+          horizontal: kHalfPadding, vertical: kDefaultPadding),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: [
+          // clone of Input but for displaying data
+          InputDecorator(
+            child: Text(
+              '1234',
+              //_convertedValue,
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            decoration: InputDecoration(
+              labelText: 'Output',
+              labelStyle: Theme.of(context).textTheme.headline4,
+              //errorText: _showValidationError ? 'Invalid number entered' : null,
+              border: OutlineInputBorder(borderRadius: kDefaultBorderRadius),
+            ),
+            // TODO
+            //onChanged: _updateInputValue,
+          ),
+          // TODO
+          //_createDropdown(_toUnit!.name, _updateToConversion);
         ],
       ),
     );
