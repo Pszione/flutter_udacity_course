@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'components/category.dart';
-import 'main.dart';
+import 'constants.dart';
 import 'models/category_model.dart';
 
-class CategoriesRoute extends StatelessWidget {
-  const CategoriesRoute({Key? key}) : super(key: key);
+class CategoriesScreen extends StatelessWidget {
+  const CategoriesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

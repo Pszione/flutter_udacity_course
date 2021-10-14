@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_udacity_course/main.dart';
+
+import '../constants.dart';
 
 const _rowHeight = 80.0;
 final _borderRadius = kHugeBorderRadius;
