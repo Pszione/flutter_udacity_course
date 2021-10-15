@@ -10,18 +10,20 @@ class CategoryModel {
     'Digital Storage',
     'Energy',
     'Currency',
-    'Birthday Cake'
+    'Birthday Cake',
+    'Pedross',
   ];
 
   static const baseColors = <Color>[
     Colors.teal,
-    Colors.orange,
+    Colors.greenAccent,
     Colors.pinkAccent,
     Colors.blueAccent,
-    Colors.yellow,
-    Colors.greenAccent,
     Colors.purpleAccent,
-    Colors.red,
+    Colors.orange,
+    Colors.yellow,
     Colors.green,
+    Colors.red,
+    Colors.white,
   ];
 }
