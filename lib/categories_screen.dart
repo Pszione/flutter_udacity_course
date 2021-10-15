@@ -16,7 +16,7 @@ class CategoriesScreen extends StatelessWidget {
       categories.add(Category(
           label: CategoryModel.categoryNames[i],
           color: CategoryModel.baseColors[i],
-          icon: Icons.cake,
+          icon: CategoryModel.categoryIcons[i],
           units: const [
             Unit(name: 'Pedras', conversion: 1.5),
             Unit(name: 'Pedrões', conversion: 5.0)

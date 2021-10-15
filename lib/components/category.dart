@@ -54,14 +54,18 @@ class Category extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: kHalfPadding),
                   child: Icon(
                     icon,
-                    size: 50,
+                    size: 40,
                   ),
                 ),
                 Center(
-                  child: Text(
-                    label,
-                    textAlign: TextAlign.center,
-                    style: Theme.of(context).textTheme.headline5,
+                  child: Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: kHalfPadding),
+                    child: Text(
+                      label,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.headline5,
+                    ),
                   ),
                 )
               ],
