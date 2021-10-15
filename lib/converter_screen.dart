@@ -119,12 +119,7 @@ class InputFieldGroup extends StatelessWidget {
           // accepts numbers and calls the onChanged property on update.
           TextField(
             style: Theme.of(context).textTheme.headline4,
-            decoration: InputDecoration(
-              labelText: 'Input',
-              labelStyle: Theme.of(context).textTheme.headline4,
-              //errorText: _showValidationError ? 'Invalid number entered' : null,
-              border: OutlineInputBorder(borderRadius: kDefaultBorderRadius),
-            ),
+            decoration: buildInputDecorationStyle(context, 'Input'),
             keyboardType: TextInputType.number,
             // TODO
             //onChanged: _updateInputValue,
@@ -153,12 +148,7 @@ class OutputFieldGroup extends StatelessWidget {
               //_convertedValue,
               style: Theme.of(context).textTheme.headline4,
             ),
-            decoration: InputDecoration(
-              labelText: 'Output',
-              labelStyle: Theme.of(context).textTheme.headline4,
-              //errorText: _showValidationError ? 'Invalid number entered' : null,
-              border: OutlineInputBorder(borderRadius: kDefaultBorderRadius),
-            ),
+            decoration: buildInputDecorationStyle(context, 'Output'),
             // TODO
             //onChanged: _updateInputValue,
           ),
@@ -168,6 +158,15 @@ class OutputFieldGroup extends StatelessWidget {
       ),
     );
   }
+}
+
+InputDecoration buildInputDecorationStyle(BuildContext context, String? label) {
+  return InputDecoration(
+    labelText: label,
+    labelStyle: Theme.of(context).textTheme.headline4,
+    //errorText: _showValidationError ? 'Invalid number entered' : null,
+    border: OutlineInputBorder(borderRadius: kDefaultBorderRadius),
+  );
 }
 
 // final unitWidgets = widget.units.map((Unit unit) {
