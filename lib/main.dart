@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_udacity_course/constants.dart';
+import 'package:flutter_udacity_course/settings_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -13,9 +14,15 @@ void main() {
 
 const kAppName = 'Unit Converter';
 
-class UnitConverterApp extends StatelessWidget {
+class UnitConverterApp extends StatefulWidget {
   const UnitConverterApp({Key? key}) : super(key: key);
-  final int currentIndex = 0;
+
+  @override
+  State<UnitConverterApp> createState() => _UnitConverterAppState();
+}
+
+class _UnitConverterAppState extends State<UnitConverterApp> {
+  int currentIndex = 0;
 
   // This widget is the root of your application.
   @override
@@ -25,19 +32,21 @@ class UnitConverterApp extends StatelessWidget {
       title: kAppName,
       home: Scaffold(
         //backgroundColor: Colors.green[100],
-        appBar: AppBarCustom(
+        appBar: const AppBarCustom(
           title: kAppName,
         ),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.zero, child: CategoriesScreen(),
-            // Category(
-            //   label: 'Cake',
-            //   icon: Icons.cake,
-            //   color: Colors.green,
-            // ),
-          ),
-        ),
+        body: currentIndex == 0
+            ? const Center(
+                child: Padding(
+                  padding: EdgeInsets.zero, child: CategoriesScreen(),
+                  // Category(
+                  //   label: 'Cake',
+                  //   icon: Icons.cake,
+                  //   color: Colors.green,
+                  // ),
+                ),
+              )
+            : const SettingsScreen(),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
               height: AppBar().preferredSize.height * 1.6,
@@ -52,6 +61,10 @@ class UnitConverterApp extends StatelessWidget {
               )),
           child: NavigationBar(
             selectedIndex: currentIndex,
+            onDestinationSelected: (int index) => setState(() {
+              currentIndex = index;
+            }),
+            labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
             destinations: const [
               NavigationDestination(
                 icon: Icon(
