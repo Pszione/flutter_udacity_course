@@ -46,7 +46,7 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
                   // ),
                 ),
               )
-            : const SettingsScreen(),
+            : SettingsScreen(),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
               height: AppBar().preferredSize.height * 1.6,
@@ -64,12 +64,14 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
             onDestinationSelected: (int index) => setState(() {
               currentIndex = index;
             }),
+            animationDuration: const Duration(seconds: 1, milliseconds: 100),
             labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
             destinations: const [
               NavigationDestination(
                 icon: Icon(
                   FontAwesomeIcons.ruler,
                 ),
+                selectedIcon: Icon(FontAwesomeIcons.rulerCombined),
                 label: 'Conversions',
                 tooltip: 'Unit conversions list',
               ),
@@ -78,6 +80,7 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
                   FontAwesomeIcons.cog,
                   size: kCategorySmallIconSize,
                 ),
+                selectedIcon: Icon(FontAwesomeIcons.userCog),
                 label: 'Settings',
                 tooltip: 'More settings',
               ),
