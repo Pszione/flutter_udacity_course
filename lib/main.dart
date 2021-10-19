@@ -1,5 +1,8 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_udacity_course/constants.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import 'categories_screen.dart';
@@ -12,6 +15,7 @@ const kAppName = 'Unit Converter';
 
 class UnitConverterApp extends StatelessWidget {
   const UnitConverterApp({Key? key}) : super(key: key);
+  final int currentIndex = 0;
 
   // This widget is the root of your application.
   @override
@@ -19,7 +23,7 @@ class UnitConverterApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: kAppName,
-      home: const Scaffold(
+      home: Scaffold(
         //backgroundColor: Colors.green[100],
         appBar: AppBarCustom(
           title: kAppName,
@@ -32,6 +36,39 @@ class UnitConverterApp extends StatelessWidget {
             //   icon: Icons.cake,
             //   color: Colors.green,
             // ),
+          ),
+        ),
+        bottomNavigationBar: NavigationBarTheme(
+          data: NavigationBarThemeData(
+              height: AppBar().preferredSize.height * 1.6,
+              indicatorColor: kSecondaryColor,
+              labelTextStyle: MaterialStateProperty.all(const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 13,
+                letterSpacing: 2.1,
+              )),
+              iconTheme: MaterialStateProperty.all(
+                const IconThemeData(size: kCategorySmallIconSize),
+              )),
+          child: NavigationBar(
+            selectedIndex: currentIndex,
+            destinations: const [
+              NavigationDestination(
+                icon: Icon(
+                  FontAwesomeIcons.ruler,
+                ),
+                label: 'Conversions',
+                tooltip: 'Unit conversions list',
+              ),
+              NavigationDestination(
+                icon: Icon(
+                  FontAwesomeIcons.cog,
+                  size: kCategorySmallIconSize,
+                ),
+                label: 'Settings',
+                tooltip: 'More settings',
+              ),
+            ],
           ),
         ),
       ),

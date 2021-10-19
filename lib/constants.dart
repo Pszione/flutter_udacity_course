@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'main.dart';
 
 const kPrimaryColor = Color(0xFF1A73E9);
-const kSecondaryColor = Color(0xffff7b67);
+const kSecondaryColor = Color(0xffff6c3f);
 const kTertiaryColor = Color(0xfffcd76b);
 const kComplementaryColor = Color(0xff00444f);
 const kDarkBackgroundColor = Color(0xff343a44);
@@ -31,6 +31,8 @@ var kDefaultBorderRadius = BorderRadius.circular(kDefaultBorderRadiusAsDouble);
 const kDefaultBorderRadiusAsDouble = 20.0;
 const kSmallBorderRadiusAsDouble = 16.0;
 const kSplashRadius = 85.0;
+const kCategoryIconSize = 40.0;
+const kCategorySmallIconSize = 40.0 * 0.85;
 
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   const AppBarCustom({Key? key, required this.title, this.color})

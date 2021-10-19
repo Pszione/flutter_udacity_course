@@ -42,7 +42,7 @@ class Category extends StatelessWidget {
           borderRadius: borderRadius,
           highlightColor: color,
           splashColor: color,
-          radius: kSplashRadius,
+          radius: kSplashRadius * 2,
           child: Padding(
             padding: const EdgeInsets.symmetric(
                 horizontal: kDefaultPadding, vertical: kHalfPadding),
@@ -54,7 +54,7 @@ class Category extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: kHalfPadding),
                   child: Icon(
                     icon,
-                    size: 40,
+                    size: kCategoryIconSize,
                   ),
                 ),
                 Center(
