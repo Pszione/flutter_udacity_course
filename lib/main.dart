@@ -1,7 +1,6 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_udacity_course/constants.dart';
+import 'package:flutter_udacity_course/help_screen.dart';
 import 'package:flutter_udacity_course/settings_screen.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -35,18 +34,38 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
         appBar: const AppBarCustom(
           title: kAppName,
         ),
-        body: currentIndex == 0
-            ? const Center(
-                child: Padding(
-                  padding: EdgeInsets.zero, child: CategoriesScreen(),
-                  // Category(
-                  //   label: 'Cake',
-                  //   icon: Icons.cake,
-                  //   color: Colors.green,
-                  // ),
-                ),
-              )
-            : SettingsScreen(),
+        body: Material(
+          type: MaterialType.transparency,
+          child: currentIndex == 0
+              ? const Center(
+                  child: Padding(
+                    padding: EdgeInsets.zero, child: CategoriesScreen(),
+                    // Category(
+                    //   label: 'Cake',
+                    //   icon: Icons.cake,
+                    //   color: Colors.green,
+                    // ),
+                  ),
+                )
+              : const SettingsScreen(),
+        ),
+        floatingActionButton: Builder(builder: (context) {
+          return FloatingActionButton(
+            child: Text(
+              '?',
+              style: TextStyle(
+                  fontSize: 30,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).colorScheme.onBackground),
+            ),
+            onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const HelpScreen(),
+                )),
+            tooltip: 'Help button',
+          );
+        }),
         bottomNavigationBar: NavigationBarTheme(
           data: NavigationBarThemeData(
               height: AppBar().preferredSize.height * 1.6,
