@@ -48,15 +48,26 @@ class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title ?? kAppName),
+      centerTitle: true,
       titleTextStyle: Theme.of(context)
           .textTheme
           .headline5!
           .copyWith(fontWeight: FontWeight.bold),
-      centerTitle: true,
+      toolbarHeight: 90, // needs space available in preferredSize
       elevation: 0,
-      automaticallyImplyLeading: true,
       backgroundColor: color?.withOpacity(0.75),
       iconTheme: const IconThemeData(size: 60),
+      //
+      automaticallyImplyLeading: true,
+      leading: ModalRoute.of(context)?.canPop ?? false
+          ? IconButton(
+              padding: const EdgeInsets.only(left: kDefaultPadding),
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: const Icon(Icons.arrow_back_ios, size: 30),
+            )
+          : const SizedBox(),
     );
   }
 }

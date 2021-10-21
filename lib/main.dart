@@ -76,7 +76,7 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
                 letterSpacing: 2.1,
               )),
               iconTheme: MaterialStateProperty.all(
-                const IconThemeData(size: kCategorySmallIconSize),
+                const IconThemeData(size: kCategorySmallIconSize * 0.85),
               )),
           child: NavigationBar(
             selectedIndex: currentIndex,
@@ -88,9 +88,9 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
             destinations: const [
               NavigationDestination(
                 icon: Icon(
-                  FontAwesomeIcons.ruler,
+                  FontAwesomeIcons.rulerCombined,
                 ),
-                selectedIcon: Icon(FontAwesomeIcons.rulerCombined),
+                selectedIcon: Icon(FontAwesomeIcons.ruler),
                 label: 'Conversions',
                 tooltip: 'Unit conversions list',
               ),
@@ -115,6 +115,7 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
         scaffoldBackgroundColor: kDarkBackgroundColor,
         backgroundColor: kDarkBackgroundColor,
         dialogBackgroundColor: kSecondaryColor,
+        highlightColor: kSecondaryColor,
         fontFamily: GoogleFonts.poppins().fontFamily,
       ),
     );
