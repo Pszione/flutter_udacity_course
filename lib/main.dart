@@ -29,81 +29,90 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: kAppName,
-      home: Scaffold(
-        //backgroundColor: Colors.green[100],
-        appBar: const AppBarCustom(
-          title: kAppName,
-        ),
-        body: Material(
-          type: MaterialType.transparency,
-          child: currentIndex == 0
-              ? const Center(
-                  child: Padding(
-                    padding: EdgeInsets.zero, child: CategoriesScreen(),
-                    // Category(
-                    //   label: 'Cake',
-                    //   icon: Icons.cake,
-                    //   color: Colors.green,
-                    // ),
-                  ),
-                )
-              : const SettingsScreen(),
-        ),
-        floatingActionButton: Builder(builder: (context) {
-          return FloatingActionButton(
-            child: Text(
-              '?',
-              style: TextStyle(
-                  fontSize: 30,
+      home: WillPopScope(
+        onWillPop: () {
+          if (currentIndex > 0) {
+            setState(() => currentIndex--);
+          }
+          return Future.value(false); // prevent exiting app
+        },
+        child: Scaffold(
+          //backgroundColor: Colors.green[100],
+          appBar: const AppBarCustom(
+            title: kAppName,
+          ),
+          body: Material(
+            type: MaterialType.transparency,
+            child: currentIndex == 0
+                ? const Center(
+                    child: Padding(
+                      padding: EdgeInsets.zero, child: CategoriesScreen(),
+                      // Category(
+                      //   label: 'Cake',
+                      //   icon: Icons.cake,
+                      //   color: Colors.green,
+                      // ),
+                    ),
+                  )
+                : const SettingsScreen(),
+          ),
+          floatingActionButton: Builder(builder: (context) {
+            return FloatingActionButton(
+              child: Text(
+                '?',
+                style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Theme.of(context).colorScheme.onBackground),
+              ),
+              onPressed: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => const HelpScreen(),
+                  )),
+              tooltip: 'Help button',
+            );
+          }),
+          bottomNavigationBar: NavigationBarTheme(
+            data: NavigationBarThemeData(
+                height: AppBar().preferredSize.height * 1.6,
+                indicatorColor: kSecondaryColor,
+                labelTextStyle: MaterialStateProperty.all(const TextStyle(
                   fontWeight: FontWeight.bold,
-                  color: Theme.of(context).colorScheme.onBackground),
-            ),
-            onPressed: () => Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (_) => const HelpScreen(),
+                  fontSize: 13,
+                  letterSpacing: 2.1,
                 )),
-            tooltip: 'Help button',
-          );
-        }),
-        bottomNavigationBar: NavigationBarTheme(
-          data: NavigationBarThemeData(
-              height: AppBar().preferredSize.height * 1.6,
-              indicatorColor: kSecondaryColor,
-              labelTextStyle: MaterialStateProperty.all(const TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 13,
-                letterSpacing: 2.1,
-              )),
-              iconTheme: MaterialStateProperty.all(
-                const IconThemeData(size: kCategorySmallIconSize * 0.85),
-              )),
-          child: NavigationBar(
-            selectedIndex: currentIndex,
-            onDestinationSelected: (int index) => setState(() {
-              currentIndex = index;
-            }),
-            animationDuration: const Duration(seconds: 1, milliseconds: 100),
-            labelBehavior: NavigationDestinationLabelBehavior.onlyShowSelected,
-            destinations: const [
-              NavigationDestination(
-                icon: Icon(
-                  FontAwesomeIcons.rulerCombined,
+                iconTheme: MaterialStateProperty.all(
+                  const IconThemeData(size: kCategorySmallIconSize * 0.85),
+                )),
+            child: NavigationBar(
+              selectedIndex: currentIndex,
+              onDestinationSelected: (int index) => setState(() {
+                currentIndex = index;
+              }),
+              animationDuration: const Duration(seconds: 1, milliseconds: 100),
+              labelBehavior:
+                  NavigationDestinationLabelBehavior.onlyShowSelected,
+              destinations: const [
+                NavigationDestination(
+                  icon: Icon(
+                    FontAwesomeIcons.rulerCombined,
+                  ),
+                  selectedIcon: Icon(FontAwesomeIcons.ruler),
+                  label: 'Conversions',
+                  tooltip: 'Unit conversions list',
                 ),
-                selectedIcon: Icon(FontAwesomeIcons.ruler),
-                label: 'Conversions',
-                tooltip: 'Unit conversions list',
-              ),
-              NavigationDestination(
-                icon: Icon(
-                  FontAwesomeIcons.cog,
-                  size: kCategorySmallIconSize,
+                NavigationDestination(
+                  icon: Icon(
+                    FontAwesomeIcons.cog,
+                    size: kCategorySmallIconSize,
+                  ),
+                  selectedIcon: Icon(FontAwesomeIcons.userCog),
+                  label: 'Settings',
+                  tooltip: 'More settings',
                 ),
-                selectedIcon: Icon(FontAwesomeIcons.userCog),
-                label: 'Settings',
-                tooltip: 'More settings',
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
