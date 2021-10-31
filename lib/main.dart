@@ -130,3 +130,9 @@ class _UnitConverterAppState extends State<UnitConverterApp> {
     );
   }
 }
+
+// TODO: test this method
+Future<T?> pushScreen<T>(BuildContext context, Widget screen) {
+  return Navigator.of(context)
+      .push<T>(MaterialPageRoute(builder: (_) => screen));
+}

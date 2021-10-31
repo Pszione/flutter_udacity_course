@@ -34,6 +34,9 @@ const kSplashRadius = 85.0;
 const kCategoryIconSize = 40.0;
 const kCategorySmallIconSize = 40.0 * 0.85;
 
+bool isScreenInPortrait(BuildContext context) =>
+    MediaQuery.of(context).orientation == Orientation.portrait;
+
 class AppBarCustom extends StatelessWidget implements PreferredSizeWidget {
   const AppBarCustom({Key? key, required this.title, this.color})
       : super(key: key);
