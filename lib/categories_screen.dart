@@ -28,6 +28,7 @@ class CategoriesScreen extends StatelessWidget {
   /// For portrait, we construct a [ListView] from the list of category widgets.
   Widget _buildCategoryWidgets(List<Widget> categories) {
     return ListView.builder(
+        key: const PageStorageKey<String>('categoriesListKey'),
         itemCount: categories.length,
         itemBuilder: (_, index) {
           return Padding(
